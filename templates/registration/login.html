@@ -1,8 +1,24 @@
 <!-- templates/registration/login.html -->
-<h2>Log In</h2>
+{% load static %}
+<html>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Log In</button>
-</form>
+    <head>
+        <title>Pothole Reports</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/registration.css' %}">
+    </head>
+
+    <body>
+        <div class="page-header">
+            <h1>Log In</h1>
+
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Log In</button>
+            </form>
+        </div>
+    </body>
+
+</html>

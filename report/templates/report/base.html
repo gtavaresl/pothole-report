@@ -25,11 +25,15 @@
         </div>
         <div class="page-header">
             {% if user.is_authenticated %}
-                <h2>Logged as {{ user.username }}!</h2>
-                <h2><a href="{% url 'logout' %}">Log Out</a></h2>
+                <h3>Logged as {{ user.username }}!</h3>
+                <h3><a href="{% url 'logout' %}">
+                    <button>Log Out</button>
+                </a></h3>
             {% else %}
-                <h2>You are not logged in</h2>
-                <h2><a href="{% url 'login' %}">Log In</a></h2>
+                <h3>You are not logged in!</h3>
+                <h3><a href="{% url 'login' %}">
+                    <button>Log In</button>
+                </a></h3>
             {% endif %}
         </div>
     </body>

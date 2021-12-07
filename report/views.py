@@ -28,7 +28,7 @@ def report_edit(request, pk):
     report = get_object_or_404(Report, pk=pk)
     if request.method == "POST":
         form = ReportForm(request.POST, instance=report)
-        if form.is_valid():
+        if form.is_valid() and report.author == request.user:
             report = form.save(commit=False)
             report.publish(request.user)
             return redirect('report_detail', pk=report.pk)

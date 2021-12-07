@@ -3,19 +3,21 @@
 {% block content %}
     {% for report in reports %}
         <div class="report">
-            <div class="date">
-                Updated at: {{ report.published_date }}
-            </div>
             <h2><a href="{% url 'report_detail' pk=report.pk %}">
                 {{ report.address }}
                 {% if report.resolved %}
-                    &#9989
+                &#9989
                 {% else %}
-                    &#128679
+                &#128679
                 {% endif %}
             </a></h2>
             <p>Author: {{ report.author }}</p>
-            <p>Created at: {{ report.created_date }}</p>
+            <div class="date">
+                Created at: {{ report.created_date }}
+            </div>
+            <div class="date">
+                Updated at: {{ report.published_date }}
+            </div>
         </div>
     {% empty %}
         <div class="report">
