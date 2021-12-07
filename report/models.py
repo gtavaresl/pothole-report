@@ -17,4 +17,4 @@ class Report(models.Model):
         self.save()
 
     def __str__(self):
-        return "Rua: " + self.street + ", " + str(self.number) + ", " + self.district
+        return self.street + ", " + str(self.number) + ", " + self.district
