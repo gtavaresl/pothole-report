@@ -2,7 +2,6 @@ from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
 from django.utils import timezone
 
-import report
 from .models import Report
 from .forms import ReportForm
 
