@@ -4,7 +4,7 @@
     <div class="report">
         {% if report.published_date %}
             <div class="date">
-                {{ report.published_date }}
+                Updated at: {{ report.published_date }}
             </div>
         {% endif %}
         {% if user.is_authenticated and user.pk == report.author_id %}
@@ -17,11 +17,7 @@
         {% endif %}
         <h2>Address: {{ report.address }}</h2>
         <p>Author: {{ report.author }}</p>
-        <p>Created at:
-            <div class="date">
-                {{ report.created_date }}
-            </div>
-        </p>
+        <p>Created at: {{ report.created_date }}</p>
         <p>Description: {{ report.description|linebreaksbr }}</p>
     </div>
 {% endblock %}
