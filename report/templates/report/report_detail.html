@@ -10,8 +10,18 @@
         {% if user.is_authenticated and user.pk == report.author_id %}
             <a class="btn btn-default" href="{% url 'report_edit' pk=report.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
         {% endif %}
-        <h2>{{ report.address }}</h2>
-        <p>{{ report.author }}</p>
-        <p>{{ report.description|linebreaksbr }}</p>
+        {% if report.resolved %}
+            <h2>Status: Pothole resolved &#9989</h2>
+        {% else %}
+            <h2>Status: Waiting for solution &#128679</h2>
+        {% endif %}
+        <h2>Address: {{ report.address }}</h2>
+        <p>Author: {{ report.author }}</p>
+        <p>Created at:
+            <div class="date">
+                {{ report.created_date }}
+            </div>
+        </p>
+        <p>Description: {{ report.description|linebreaksbr }}</p>
     </div>
 {% endblock %}

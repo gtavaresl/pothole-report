@@ -6,4 +6,4 @@ class ReportForm(forms.ModelForm):
 
     class Meta:
         model = Report
-        fields = ('street', 'number', 'district', 'description',)
+        fields = ('resolved', 'street', 'number', 'district', 'description',)
