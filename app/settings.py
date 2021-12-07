@@ -71,6 +71,7 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 # Redirect when login
 LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 
 # Database

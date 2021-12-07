@@ -9,5 +9,9 @@
             <h2><a href="{% url 'report_detail' pk=report.pk %}">{{ report.author }}</a></h2>
             <p>{{ report.description|linebreaksbr }}</p>
         </div>
+    {% empty %}
+        <div class="report">
+            <h2><a>"No reports yet!"</a>></h2>
+        </div>
     {% endfor %}
 {% endblock %}
