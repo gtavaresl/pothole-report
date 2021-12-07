@@ -1,14 +1,13 @@
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+{% extends 'report/base.html' %}
 
-<div>
-    <h1><a href="/">Pothole Reports</a></h1>
-</div>
-
-{% for post in posts %}
-    <div>
-        <p>published: {{ post.published_date }}</p>
-        <h2><a href="">{{ post.author }}</a></h2>
-        <p>{{ post.description|linebreaksbr }}</p>
-    </div>
-{% endfor %}
+{% block content %}
+    {% for report in reports %}
+        <div class="report">
+            <div class="date">
+                {{ report.published_date }}
+            </div>
+            <h2><a href="{% url 'report_detail' pk=report.pk %}">{{ report.author }}</a></h2>
+            <p>{{ report.description|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

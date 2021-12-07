@@ -1,0 +1,13 @@
+{% extends 'report/base.html' %}
+
+{% block content %}
+    <div class="report">
+        {% if report.published_date %}
+            <div class="date">
+                {{ report.published_date }}
+            </div>
+        {% endif %}
+        <h2>{{ report.title }}</h2>
+        <p>{{ report.text|linebreaksbr }}</p>
+    </div>
+{% endblock %}
