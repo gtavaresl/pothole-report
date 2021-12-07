@@ -18,8 +18,7 @@ def report_new(request):
         form = ReportForm(request.POST)
         if form.is_valid():
             report = form.save(commit=False)
-            report.author = request.user
-            report.publish()
+            report.publish(request.user)
             return redirect('report_detail', pk=report.pk)
     else:
         form = ReportForm()
@@ -31,9 +30,7 @@ def report_edit(request, pk):
         form = ReportForm(request.POST, instance=report)
         if form.is_valid():
             report = form.save(commit=False)
-            report.author = request.user
-            report.published_date = timezone.now()
-            report.save()
+            report.publish(request.user)
             return redirect('report_detail', pk=report.pk)
     else:
         form = ReportForm(instance=report)

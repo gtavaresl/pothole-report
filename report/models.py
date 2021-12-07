@@ -8,11 +8,14 @@ class Report(models.Model):
     street = models.TextField()
     number = models.IntegerField()
     district = models.TextField()
+    address = models.TextField()
     description = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
 
-    def publish(self):
+    def publish(self, author):
+        self.author = author
+        self.address = self.street + ", " + str(self.number) + ", " + self.district
         self.published_date = timezone.now()
         self.save()
 
