@@ -7,8 +7,11 @@
                 {{ report.published_date }}
             </div>
         {% endif %}
-        <a class="btn btn-default" href="{% url 'report_edit' pk=report.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-        <h2>{{ report.author }}</h2>
+        {% if user.is_authenticated and user.pk == report.author_id %}
+            <a class="btn btn-default" href="{% url 'report_edit' pk=report.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        {% endif %}
+        <h2>{{ report.address }}</h2>
+        <p>{{ report.author }}</p>
         <p>{{ report.description|linebreaksbr }}</p>
     </div>
 {% endblock %}

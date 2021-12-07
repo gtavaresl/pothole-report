@@ -2,7 +2,6 @@ from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
 from django.utils import timezone
 
-import report
 from .models import Report
 from .forms import ReportForm
 
@@ -19,8 +18,7 @@ def report_new(request):
         form = ReportForm(request.POST)
         if form.is_valid():
             report = form.save(commit=False)
-            report.author = request.user
-            report.publish()
+            report.publish(request.user)
             return redirect('report_detail', pk=report.pk)
     else:
         form = ReportForm()
@@ -32,9 +30,7 @@ def report_edit(request, pk):
         form = ReportForm(request.POST, instance=report)
         if form.is_valid():
             report = form.save(commit=False)
-            report.author = request.user
-            report.published_date = timezone.now()
-            report.save()
+            report.publish(request.user)
             return redirect('report_detail', pk=report.pk)
     else:
         form = ReportForm(instance=report)
